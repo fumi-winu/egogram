@@ -1,5 +1,5 @@
-import { EgogramApp } from "@/components/EgogramApp";
+import { ExistentialApp } from "@/components/ExistentialApp";
 
 export default function Home() {
-  return <EgogramApp />;
+  return <ExistentialApp />;
 }

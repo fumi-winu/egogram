@@ -1,18 +1,330 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  color-scheme: dark;
+  --background: #07090c;
+  --foreground: #e7e5e4;
+  --heading: #f5f5f4;
+  --muted: #a8a29e;
+  --subtle: #78716c;
+  --surface: rgba(9, 9, 11, 0.78);
+  --card: rgba(255, 255, 255, 0.035);
+  --card-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --track: rgba(255, 255, 255, 0.1);
+  --accent: #c4a574;
+  --accent-soft: rgba(196, 165, 116, 0.16);
+  --button: #e7e5e4;
+  --button-fg: #09090b;
+  --button-hover: #ffffff;
+  --ghost-hover: rgba(255, 255, 255, 0.05);
+  --ring-offset: #07090c;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --page-glow: rgba(196, 165, 116, 0.1);
+  --chart-grid: #3f3f46;
+  --chart-axis: #52525b;
+  --chart-fill: rgba(196, 165, 116, 0.18);
+  --chart-stroke: #c4a574;
+  --factor-creative: #d4a373;
+  --factor-experiential: #7eb8c9;
+  --factor-attitudinal: #b8a1c9;
+  --factor-autonomy: #9aa3b2;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --background: #f3efe9;
+    --foreground: #292524;
+    --heading: #1c1917;
+    --muted: #57534e;
+    --subtle: #78716c;
+    --surface: rgba(255, 252, 247, 0.86);
+    --card: rgba(28, 25, 23, 0.035);
+    --card-hover: rgba(28, 25, 23, 0.06);
+    --border: rgba(28, 25, 23, 0.12);
+    --border-subtle: rgba(28, 25, 23, 0.08);
+    --track: rgba(28, 25, 23, 0.1);
+    --accent: #8f5a28;
+    --accent-soft: rgba(143, 90, 40, 0.14);
+    --button: #1c1917;
+    --button-fg: #fafaf9;
+    --button-hover: #292524;
+    --ghost-hover: rgba(28, 25, 23, 0.05);
+    --ring-offset: #f3efe9;
+    --shadow: 0 24px 80px rgba(28, 25, 23, 0.1);
+    --page-glow: rgba(143, 90, 40, 0.12);
+    --chart-grid: #d6d3d1;
+    --chart-axis: #a8a29e;
+    --chart-fill: rgba(143, 90, 40, 0.16);
+    --chart-stroke: #8f5a28;
+    --factor-creative: #9a5b1f;
+    --factor-experiential: #0e7490;
+    --factor-attitudinal: #6d28d9;
+    --factor-autonomy: #334155;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #07090c;
+  --foreground: #e7e5e4;
+  --heading: #f5f5f4;
+  --muted: #a8a29e;
+  --subtle: #78716c;
+  --surface: rgba(9, 9, 11, 0.78);
+  --card: rgba(255, 255, 255, 0.035);
+  --card-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --track: rgba(255, 255, 255, 0.1);
+  --accent: #c4a574;
+  --accent-soft: rgba(196, 165, 116, 0.16);
+  --button: #e7e5e4;
+  --button-fg: #09090b;
+  --button-hover: #ffffff;
+  --ghost-hover: rgba(255, 255, 255, 0.05);
+  --ring-offset: #07090c;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --page-glow: rgba(196, 165, 116, 0.1);
+  --chart-grid: #3f3f46;
+  --chart-axis: #52525b;
+  --chart-fill: rgba(196, 165, 116, 0.18);
+  --chart-stroke: #c4a574;
+  --factor-creative: #d4a373;
+  --factor-experiential: #7eb8c9;
+  --factor-attitudinal: #b8a1c9;
+  --factor-autonomy: #9aa3b2;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f3efe9;
+  --foreground: #292524;
+  --heading: #1c1917;
+  --muted: #57534e;
+  --subtle: #78716c;
+  --surface: rgba(255, 252, 247, 0.86);
+  --card: rgba(28, 25, 23, 0.035);
+  --card-hover: rgba(28, 25, 23, 0.06);
+  --border: rgba(28, 25, 23, 0.12);
+  --border-subtle: rgba(28, 25, 23, 0.08);
+  --track: rgba(28, 25, 23, 0.1);
+  --accent: #8f5a28;
+  --accent-soft: rgba(143, 90, 40, 0.14);
+  --button: #1c1917;
+  --button-fg: #fafaf9;
+  --button-hover: #292524;
+  --ghost-hover: rgba(28, 25, 23, 0.05);
+  --ring-offset: #f3efe9;
+  --shadow: 0 24px 80px rgba(28, 25, 23, 0.1);
+  --page-glow: rgba(143, 90, 40, 0.12);
+  --chart-grid: #d6d3d1;
+  --chart-axis: #a8a29e;
+  --chart-fill: rgba(143, 90, 40, 0.16);
+  --chart-stroke: #8f5a28;
+  --factor-creative: #9a5b1f;
+  --factor-experiential: #0e7490;
+  --factor-attitudinal: #6d28d9;
+  --factor-autonomy: #334155;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-track: var(--track);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-button: var(--button);
+  --color-button-fg: var(--button-fg);
+  --color-button-hover: var(--button-hover);
+  --color-ghost-hover: var(--ghost-hover);
+  --color-ring-offset: var(--ring-offset);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-noto-serif);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.article-prose {
+  color: var(--foreground);
+}
+
+.article-prose h2 {
+  font-family: var(--font-noto-serif), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 2rem 0 0.75rem;
+}
+
+.article-prose h3 {
+  font-family: var(--font-noto-serif), serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.article-prose p {
+  margin: 0.9rem 0;
+  line-height: 1.85;
+  font-size: 0.98rem;
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin: 0.9rem 0;
+  padding-left: 1.25rem;
+}
+
+.article-prose li {
+  margin: 0.4rem 0;
+  line-height: 1.75;
+}
+
+.article-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-prose strong {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.article-prose blockquote {
+  margin: 1.25rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+}
+
+.article-category-card {
+  background-color: rgb(15 23 42 / 0.6);
+  border-color: #1e293b;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .article-category-card {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+  }
+}
+
+:root[data-theme="light"] .article-category-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .article-category-card {
+  background-color: rgb(15 23 42 / 0.6);
+  border-color: #1e293b;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #1c1917 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .premium-report,
+  .deep-report {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .premium-cover,
+  .premium-chapter {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #d6d3d1 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+    padding: 14mm 12mm !important;
+  }
+
+  .premium-cover {
+    min-height: auto;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .premium-chapter:not(.premium-cover) {
+    page-break-before: always;
+    break-before: page;
+    border-top: none !important;
+  }
+
+  .premium-callout,
+  .premium-anchor,
+  .premium-week {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: #fafaf9 !important;
+    border-color: #d6d3d1 !important;
+  }
+
+  .premium-anchor {
+    border-color: #a8a29e !important;
+  }
+
+  .premium-report h1,
+  .premium-report h2,
+  .premium-report h3,
+  .premium-report p,
+  .premium-report li,
+  .premium-report span {
+    color: #1c1917 !important;
+  }
+
+  .premium-report .text-subtle,
+  .premium-report .text-muted {
+    color: #57534e !important;
+  }
+
+  .premium-report .text-accent {
+    color: #44403c !important;
+  }
+
+  .premium-report .bg-surface,
+  .premium-report .bg-card,
+  .premium-report .bg-accent-soft {
+    background: #ffffff !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 14mm 12mm;
+  }
 }
