@@ -9,6 +9,7 @@ interface QuestionScreenProps {
   currentIndex: number;
   total: number;
   onAnswer: (value: AnswerValue) => void;
+  onBack: () => void;
 }
 
 const PANEL =
@@ -19,18 +20,28 @@ export function QuestionScreen({
   currentIndex,
   total,
   onAnswer,
+  onBack,
 }: QuestionScreenProps) {
   const progress = ((currentIndex + 1) / total) * 100;
 
   return (
     <div className={PANEL}>
       <div className="mb-8">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={onBack}
+            className="text-sm text-muted underline-offset-4 transition-colors hover:text-heading hover:underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-ring-offset"
+          >
+            ← 戻る
+          </button>
+          <span className="text-[11px] tracking-[0.18em] text-subtle">
+            5件法
+          </span>
+        </div>
         <div className="mb-2 flex items-center justify-between text-sm text-muted">
           <span>
             質問 {currentIndex + 1} / {total}
-          </span>
-          <span className="text-[11px] tracking-[0.18em] text-subtle">
-            5件法
           </span>
         </div>
         <div className="h-1 overflow-hidden rounded-full bg-track">

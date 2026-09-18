@@ -53,6 +53,14 @@ export function ExistentialApp() {
     }
   };
 
+  const handleBack = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      return;
+    }
+    setScreen("start");
+  };
+
   const question = QUESTIONS[currentIndex];
 
   return (
@@ -64,6 +72,7 @@ export function ExistentialApp() {
           currentIndex={currentIndex}
           total={QUESTIONS.length}
           onAnswer={handleAnswer}
+          onBack={handleBack}
         />
       )}
     </PageShell>
