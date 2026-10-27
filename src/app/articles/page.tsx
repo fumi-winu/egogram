@@ -123,15 +123,15 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
   return (
     <PageShell size="xl" align="start">
-      <header className="mb-10">
+      <header className="collection-heading">
         <p className="mb-3 text-[11px] font-medium tracking-[0.28em] text-accent">
-          解説
+          THE JOURNAL / IDEAS FOR EVERYDAY
         </p>
         <h1 className="mb-2 font-serif text-3xl font-semibold text-heading">
-          解説記事
+          自分を知る、読みもの。
         </h1>
         <p className="max-w-2xl text-[15px] leading-relaxed text-muted">
-          実存分析と動機診断をめぐる記事コレクションです。関心のあるテーマから探してください。
+          診断のその先へ。日々の選択や人との関わりを、少し違う角度から見つめるヒントを集めました。
         </p>
       </header>
 
@@ -164,7 +164,7 @@ function ArticleList({ articles }: { articles: ArticleMeta[] }) {
         <li key={article.slug}>
           <Link
             href={`/articles/${article.slug}`}
-            className="block rounded-xl border border-border-subtle bg-card p-5 transition-colors hover:bg-card-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-ring-offset"
+            className="article-row"
           >
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
               {article.date && (

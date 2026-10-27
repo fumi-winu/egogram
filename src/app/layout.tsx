@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     template: "%s | 実存的動機診断",
   },
   description:
-    "フランクルの実存分析・ロゴセラピーに基づく、創造・体験・態度・実存的自律の四因子診断",
+    "フランクルの思想を参考にした独自の自己理解コンテンツ。創造・体験・態度・自律から、日々の意味を見つめます。",
 };
 
 export const viewport: Viewport = {
   colorScheme: "dark light",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#07090c" },
-    { media: "(prefers-color-scheme: light)", color: "#f3efe9" },
+    { media: "(prefers-color-scheme: dark)", color: "#15241f" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f6f0" },
   ],
 };
 
@@ -51,8 +51,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <a href="#main-content" className="skip-link">本文へスキップ</a>
         <SiteHeader />
-        <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+        <main id="main-content" className="flex min-h-0 flex-1 flex-col">{children}</main>
         <SiteFooter />
         <SettingsPanel />
       </body>

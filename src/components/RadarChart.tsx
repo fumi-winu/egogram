@@ -60,7 +60,7 @@ export function RadarChart({ scores }: RadarChartProps) {
     <div className="flex flex-col items-center">
       <svg
         viewBox={`0 0 ${size} ${size}`}
-        className="h-72 w-72 sm:h-80 sm:w-80"
+        className="w-full max-w-80 h-auto"
         aria-label="実存的動機のレーダーチャート"
       >
         {gridLevels.map((points, i) => (

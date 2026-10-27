@@ -1,7 +1,7 @@
 const SIZE_CLASS = {
-  md: "w-full max-w-2xl",
-  lg: "w-full max-w-3xl",
-  xl: "w-full max-w-5xl",
+  md: "w-full max-w-3xl",
+  lg: "w-full max-w-4xl",
+  xl: "w-full max-w-6xl",
 } as const;
 
 interface PageShellProps {
@@ -17,7 +17,7 @@ export function PageShell({
 }: PageShellProps) {
   return (
     <div
-      className={`flex flex-1 justify-center bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,var(--page-glow),transparent_55%),var(--background)] px-4 py-10 pb-24 print:bg-white print:px-0 print:py-0 print:pb-0 ${
+      className={`page-shell flex flex-1 justify-center px-5 py-10 pb-24 sm:px-8 sm:py-16 print:bg-white print:px-0 print:py-0 print:pb-0 ${
         align === "center" ? "items-center" : "items-start"
       }`}
     >

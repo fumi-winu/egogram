@@ -38,7 +38,7 @@ export function ResultFromQuery() {
   }
 
   return (
-    <PageShell>
+    <PageShell size="lg">
       <ResultScreen result={result} />
     </PageShell>
   );

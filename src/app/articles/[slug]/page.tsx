@@ -31,7 +31,7 @@ export async function generateMetadata({
 }
 
 const PANEL =
-  "rounded-2xl border border-border bg-surface p-8 shadow-[var(--shadow)] backdrop-blur-sm sm:p-12";
+  "reading-panel";
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
@@ -49,6 +49,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <PageShell size="lg" align="start">
+      <p className="mb-6"><Link href="/articles" className="text-link">← 読みもの一覧に戻る</Link></p>
       <article className={PANEL}>
         <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
           {article.date && (
@@ -68,6 +69,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <h1 className="mb-6 font-serif text-3xl font-semibold tracking-tight text-heading sm:text-4xl">
           {article.title}
         </h1>
+        <p className="mb-8 text-sm leading-7 text-muted">{article.description}</p>
         <div
           className="article-prose"
           dangerouslySetInnerHTML={{ __html: article.html }}

@@ -15,15 +15,15 @@ import { QuestionScreen } from "./QuestionScreen";
 
 const RESET_EVENT = "existential-reset";
 
-function emptyAnswers(): AnswerValue[] {
-  return Array.from({ length: QUESTIONS.length }, () => 1);
+function emptyAnswers(): (AnswerValue | undefined)[] {
+  return Array.from({ length: QUESTIONS.length }, () => undefined);
 }
 
 export function ExistentialApp() {
   const router = useRouter();
   const [screen, setScreen] = useState<Screen>("start");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<AnswerValue[]>(emptyAnswers);
+  const [answers, setAnswers] = useState<(AnswerValue | undefined)[]>(emptyAnswers);
 
   useEffect(() => {
     const onReset = () => {
@@ -41,15 +41,21 @@ export function ExistentialApp() {
     setAnswers(emptyAnswers());
   };
 
-  const handleAnswer = (value: AnswerValue) => {
+  const handleSelect = (value: AnswerValue) => {
     const nextAnswers = [...answers];
     nextAnswers[currentIndex] = value;
     setAnswers(nextAnswers);
+  };
 
+  const handleNext = () => {
+    if (answers[currentIndex] === undefined) return;
     if (currentIndex < QUESTIONS.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      router.push(buildResultPath(diagnose(nextAnswers)));
+      const completed = answers.filter((value): value is AnswerValue => value !== undefined);
+      if (completed.length === QUESTIONS.length) {
+        router.push(buildResultPath(diagnose(completed)));
+      }
     }
   };
 
@@ -64,14 +70,16 @@ export function ExistentialApp() {
   const question = QUESTIONS[currentIndex];
 
   return (
-    <PageShell>
+    <PageShell size={screen === "start" ? "xl" : "md"}>
       {screen === "start" && <StartScreen onStart={handleStart} />}
       {screen === "question" && question && (
         <QuestionScreen
           question={question}
           currentIndex={currentIndex}
           total={QUESTIONS.length}
-          onAnswer={handleAnswer}
+          answer={answers[currentIndex]}
+          onSelect={handleSelect}
+          onNext={handleNext}
           onBack={handleBack}
         />
       )}

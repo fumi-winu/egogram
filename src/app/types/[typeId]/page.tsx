@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TypeEmblem } from "@/components/TypeEmblem";
 import { PageShell } from "@/components/PageShell";
 import {
   FACTOR_INFO,
@@ -33,7 +34,7 @@ export async function generateMetadata({
 }
 
 const PANEL =
-  "rounded-2xl border border-border bg-surface p-8 shadow-[var(--shadow)] backdrop-blur-sm sm:p-10";
+  "reading-panel";
 
 export default async function TypePage({ params }: TypePageProps) {
   const { typeId } = await params;
@@ -45,9 +46,11 @@ export default async function TypePage({ params }: TypePageProps) {
 
   return (
     <PageShell size="lg" align="start">
+      <p className="mb-6"><Link href="/types" className="text-link">← タイプ図鑑に戻る</Link></p>
       <article className={PANEL}>
+        <TypeEmblem typeId={typeId} className="type-detail-emblem" />
         <p className="mb-3 text-[11px] font-medium tracking-[0.28em] text-accent">
-          タイプ図鑑
+          TYPE PROFILE
         </p>
         <h1 className="mb-2 font-serif text-3xl font-semibold text-heading sm:text-4xl">
           {type.name}
@@ -82,7 +85,7 @@ export default async function TypePage({ params }: TypePageProps) {
 
         <section className="mb-8">
           <h2 className="mb-3 font-serif text-base font-semibold text-heading">
-            深層解説
+            このタイプの読み方
           </h2>
           <div className="space-y-4">
             {paragraphs.map((paragraph) => (
@@ -98,7 +101,7 @@ export default async function TypePage({ params }: TypePageProps) {
 
         <section className="mb-8">
           <h2 className="mb-3 font-serif text-base font-semibold text-heading">
-            強みとなる実存的構え
+            回答から見える傾向
           </h2>
           <p className="text-[15px] leading-relaxed text-foreground">
             {type.strengths}
@@ -107,7 +110,7 @@ export default async function TypePage({ params }: TypePageProps) {
 
         <section className="mb-8">
           <h2 className="mb-3 font-serif text-base font-semibold text-heading">
-            陥りやすい実存的危機
+            読み解くときのヒント
           </h2>
           <p className="text-[15px] leading-relaxed text-foreground">
             {type.crisis}
@@ -116,7 +119,7 @@ export default async function TypePage({ params }: TypePageProps) {
 
         <section className="mb-8">
           <h2 className="mb-3 font-serif text-base font-semibold text-heading">
-            処方箋
+            今日から試せること
           </h2>
           <p className="text-[15px] leading-relaxed text-foreground">
             {type.prescription}

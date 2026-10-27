@@ -4,22 +4,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV = [
-  { href: "/", label: "診断トップ" },
-  { href: "/articles", label: "解説記事" },
-  { href: "/types", label: "タイプ一覧" },
+  { href: "/", label: "診断する" },
+  { href: "/types", label: "タイプ図鑑" },
+  { href: "/articles", label: "読みもの" },
 ] as const;
 
 export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md print:hidden">
-      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+    <header className="site-header sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md print:hidden">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 sm:px-8">
         <Link
           href="/"
-          className="font-serif text-sm font-semibold tracking-wide text-heading sm:text-base"
+          className="brand-lockup"
         >
-          実存的動機診断
+          <span className="brand-symbol" aria-hidden="true">✳</span>
+          <span><span className="brand-name">意味のかたち</span><span className="brand-subtitle">実存的動機診断</span></span>
         </Link>
         <nav aria-label="主要ナビゲーション" className="flex flex-wrap gap-1">
           {NAV.map((item) => {
@@ -31,7 +32,8 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-ring-offset sm:text-sm ${
+                aria-current={active ? "page" : undefined}
+                className={`rounded-full px-4 py-2 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-ring-offset sm:text-sm ${
                   active
                     ? "bg-accent-soft text-heading"
                     : "text-muted hover:bg-ghost-hover hover:text-heading"

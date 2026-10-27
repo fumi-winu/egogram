@@ -10,7 +10,8 @@ const LINKS = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background/60 print:hidden">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-5 py-10 sm:px-8">
+        <p className="font-serif text-xl text-heading">意味のかたち<span className="ml-4 font-sans text-[10px] tracking-[0.2em] text-subtle">A LITTLE MORE LIKE YOU.</span></p>
         <p className="text-[11px] leading-relaxed text-subtle">
           本診断は自己理解のためのものであり、医学的診断ではありません。
         </p>
